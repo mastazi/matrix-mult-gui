@@ -20,6 +20,7 @@ import InputMatrix from "@/components/InputMatrix.vue";
 import Result from "@/components/Result.vue";
 import MatrixSize from "../components/MatrixSize.vue";
 import { uuid } from "vue-uuid";
+import multiply from "@/api";
 
 export default {
   name: "Home",
@@ -33,6 +34,7 @@ export default {
       matrix_x: 3,
       matrix_y: 2,
       componentKey: uuid.v1(),
+      result: null,
     };
   },
   methods: {
@@ -46,6 +48,16 @@ export default {
       this.componentKey = this.$uuid.v1();
       this.matrix_x = 3;
       this.matrix_y = 2;
+    },
+    async multiplyMatrices(matrixA, matrixB) {
+      let params = {
+        matrix_a: matrixA,
+        matrix_b: matrixB,
+      };
+      let { data, status } = await multiply(params);
+      if (status == "success") {
+        this.result = data;
+      }
     },
   },
 };
