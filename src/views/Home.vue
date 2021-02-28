@@ -1,8 +1,12 @@
 <template>
   <div class="home">
-    <matrix-size></matrix-size>
+    <matrix-size
+      @update-matrix-x="updateMatrixX"
+      @update-matrix-y="updateMatrixY"
+    ></matrix-size>
     <input-matrix></input-matrix>
     <result></result>
+    matrix x: {{ matrix_x }} matrix_y: {{ matrix_y }}
   </div>
 </template>
 
@@ -17,6 +21,20 @@ export default {
     InputMatrix,
     Result,
     MatrixSize,
+  },
+  data() {
+    return {
+      matrix_x: 3,
+      matrix_y: 2,
+    };
+  },
+  methods: {
+    updateMatrixX(newVal) {
+      this.matrix_x = newVal;
+    },
+    updateMatrixY(newVal) {
+      this.matrix_y = newVal;
+    },
   },
 };
 </script>

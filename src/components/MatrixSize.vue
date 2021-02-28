@@ -28,14 +28,17 @@ export default {
   name: "MatrixSize",
   watch: {
     // matrix dimensions should be integers not floats.
+    // $nextTick is required in order to update the input field.
     matrix_x: function (newVal) {
       this.$nextTick(function () {
         this.matrix_x = parseInt(newVal);
+        this.$emit("update-matrix-x", this.matrix_x);
       });
     },
     matrix_y: function (newVal) {
       this.$nextTick(function () {
-        this.matrix_x = parseInt(newVal);
+        this.matrix_y = parseInt(newVal);
+        this.$emit("update-matrix-y", this.matrix_y);
       });
     },
   },
