@@ -11,7 +11,6 @@
       :key="'im_' + componentKey"
     ></input-matrix>
     <result :key="'r_' + componentKey"></result>
-    matrix x: {{ matrix_x }} matrix_y: {{ matrix_y }}
     <p><b-button @click="resetAllForms">New Multiplication</b-button></p>
   </div>
 </template>

@@ -1,7 +1,6 @@
 <template>
   <div class="input-matrix">
     <h1>Input Matrix A</h1>
-    {{ matrixA[0][0] }}
     <b-form inline v-for="n in matrix_y" :key="'A' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_x"
@@ -11,7 +10,6 @@
       ></b-form-input>
     </b-form>
     <h1>Input Matrix B</h1>
-    {{ matrixB[0][0] }}
     <b-form inline v-for="n in matrix_x" :key="'B' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_y"
@@ -20,7 +18,6 @@
         v-model="matrixB[m - 1][n - 1]"
       ></b-form-input>
     </b-form>
-    X: {{ matrix_x }} Y: {{ matrix_y }}
   </div>
 </template>
 <script>
