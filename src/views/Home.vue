@@ -4,7 +4,7 @@
       @update-matrix-x="updateMatrixX"
       @update-matrix-y="updateMatrixY"
     ></matrix-size>
-    <input-matrix></input-matrix>
+    <input-matrix :matrix_x="matrix_x" :matrix_y="matrix_y"></input-matrix>
     <result></result>
     matrix x: {{ matrix_x }} matrix_y: {{ matrix_y }}
   </div>
