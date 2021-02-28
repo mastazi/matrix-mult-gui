@@ -1,4 +1,5 @@
 import Vue from "vue";
+import UUID from "vue-uuid";
 import {
   // ModalPlugin,
   // BVModalPlugin,
@@ -17,7 +18,7 @@ import {
   // CardPlugin,
   // AvatarPlugin,
   // CarouselPlugin,
-  // ButtonPlugin,
+  ButtonPlugin,
   // TabsPlugin,
   // TooltipPlugin,
   // BadgePlugin,
@@ -27,6 +28,7 @@ import {
   // FormCheckboxPlugin,
 } from "bootstrap-vue";
 
+Vue.use(UUID);
 // Vue.use(ModalPlugin);
 // Vue.use(BVModalPlugin);
 // Vue.use(AlertPlugin);
@@ -44,7 +46,7 @@ Vue.use(FormGroupPlugin);
 // Vue.use(CardPlugin);
 // Vue.use(AvatarPlugin);
 // Vue.use(CarouselPlugin);
-// Vue.use(ButtonPlugin);
+Vue.use(ButtonPlugin);
 // Vue.use(TabsPlugin);
 // Vue.use(TooltipPlugin);
 // Vue.use(BadgePlugin);

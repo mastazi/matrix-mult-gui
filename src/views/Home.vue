@@ -3,15 +3,16 @@
     <matrix-size
       @update-matrix-x="updateMatrixX"
       @update-matrix-y="updateMatrixY"
-      :key="componentKey"
+      :key="'ms_' + componentKey"
     ></matrix-size>
     <input-matrix
       :matrix_x="matrix_x"
       :matrix_y="matrix_y"
-      :key="componentKey"
+      :key="'im_' + componentKey"
     ></input-matrix>
-    <result :key="componentKey"></result>
+    <result :key="'r_' + componentKey"></result>
     matrix x: {{ matrix_x }} matrix_y: {{ matrix_y }}
+    <p><b-button @click="resetAllForms">New Multiplication</b-button></p>
   </div>
 </template>
 
@@ -19,6 +20,7 @@
 import InputMatrix from "@/components/InputMatrix.vue";
 import Result from "@/components/Result.vue";
 import MatrixSize from "../components/MatrixSize.vue";
+import { uuid } from "vue-uuid";
 
 export default {
   name: "Home",
@@ -31,7 +33,7 @@ export default {
     return {
       matrix_x: 3,
       matrix_y: 2,
-      componentKey: 0,
+      componentKey: uuid.v1(),
     };
   },
   methods: {
@@ -42,7 +44,9 @@ export default {
       this.matrix_y = newVal;
     },
     resetAllForms() {
-      this.componentKey += 1;
+      this.componentKey = this.$uuid.v1();
+      this.matrix_x = 3;
+      this.matrix_y = 2;
     },
   },
 };

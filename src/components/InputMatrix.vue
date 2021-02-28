@@ -1,21 +1,23 @@
 <template>
   <div class="input-matrix">
     <h1>Input Matrix A</h1>
+    {{ matrixA[0][0] }}
     <b-form inline v-for="n in matrix_y" :key="'A' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_x"
         :key="'A' + n + ':' + m"
         class="short-input"
-        :placeholder="n + ' ' + m"
+        v-model="matrixA[m - 1][n - 1]"
       ></b-form-input>
     </b-form>
     <h1>Input Matrix B</h1>
+    {{ matrixB[0][0] }}
     <b-form inline v-for="n in matrix_x" :key="'B' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_y"
         :key="'B' + n + ':' + m"
         class="short-input"
-        :placeholder="n + ' ' + m"
+        v-model="matrixB[m - 1][n - 1]"
       ></b-form-input>
     </b-form>
     X: {{ matrix_x }} Y: {{ matrix_y }}
@@ -47,6 +49,10 @@ export default {
   },
   watch: {
     matrix_x: function () {
+      this.initialiseA();
+      this.initialiseB();
+    },
+    matrix_y: function () {
       this.initialiseA();
       this.initialiseB();
     },
