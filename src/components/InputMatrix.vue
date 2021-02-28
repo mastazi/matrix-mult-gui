@@ -1,6 +1,6 @@
 <template>
-  <div class="input-matrix">
-    <h1>Input Matrix A</h1>
+  <div class="input-matrix text-center">
+    <h1>Input Matrix A Values</h1>
     <b-form inline v-for="n in matrix_y" :key="'A' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_x"
@@ -9,7 +9,7 @@
         v-model="matrixA[m - 1][n - 1]"
       ></b-form-input>
     </b-form>
-    <h1>Input Matrix B</h1>
+    <h1>Input Matrix B Values</h1>
     <b-form inline v-for="n in matrix_x" :key="'B' + n" class="matrix-form">
       <b-form-input
         v-for="m in matrix_y"
@@ -71,9 +71,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.short-input {
-  width: 4rem;
-}
 .matrix-form {
   margin: 0 auto;
 }

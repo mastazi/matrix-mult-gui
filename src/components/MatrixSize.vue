@@ -4,9 +4,19 @@
     <b-form inline>
       <b-form-group>
         &hellip;a
-        <b-form-input v-model="matrix_x" type="number" required></b-form-input>
+        <b-form-input
+          v-model="matrix_x"
+          type="number"
+          class="short-input"
+          readonly
+        ></b-form-input>
         by
-        <b-form-input v-model="matrix_y" type="number" required></b-form-input>
+        <b-form-input
+          v-model="matrix_y"
+          type="number"
+          class="short-input"
+          readonly
+        ></b-form-input>
         matrix
       </b-form-group>
     </b-form>
@@ -15,12 +25,39 @@
       <b-form-group> </b-form-group>
       <b-form-group>
         &hellip;a
-        <b-form-input v-model="matrix_y" type="number" readonly></b-form-input>
+        <b-form-input
+          v-model="matrix_y"
+          type="number"
+          class="short-input"
+          readonly
+        ></b-form-input>
         by
-        <b-form-input v-model="matrix_x" type="number" readonly></b-form-input>
+        <b-form-input
+          v-model="matrix_x"
+          type="number"
+          class="short-input"
+          readonly
+        ></b-form-input>
         matrix
       </b-form-group>
     </b-form>
+    <h3>Change dimensions:</h3>
+    <b-form-input
+      v-model="matrix_x"
+      type="range"
+      min="1"
+      max="9"
+      class="mt-2"
+    ></b-form-input>
+    <div class="mb-2">Value: {{ matrix_x }}</div>
+    <b-form-input
+      v-model="matrix_y"
+      type="range"
+      min="1"
+      max="9"
+      class="mt-2"
+    ></b-form-input>
+    <div class="mb-2">Value: {{ matrix_y }}</div>
   </div>
 </template>
 <script>

@@ -30,4 +30,12 @@
     }
   }
 }
+
+.form-inline .form-control.short-input {
+  width: 4rem;
+}
+
+.form-inline {
+  justify-content: center;
+}
 </style>
