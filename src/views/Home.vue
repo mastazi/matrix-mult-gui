@@ -20,7 +20,7 @@ import InputMatrix from "@/components/InputMatrix.vue";
 import Result from "@/components/Result.vue";
 import MatrixSize from "../components/MatrixSize.vue";
 import { uuid } from "vue-uuid";
-import multiply from "@/api";
+import { multiply } from "@/api";
 
 export default {
   name: "Home",
@@ -54,9 +54,12 @@ export default {
         matrix_a: matrixA,
         matrix_b: matrixB,
       };
-      let { data, status } = await multiply(params);
+      let { data, status, message } = await multiply(params);
       if (status == "success") {
         this.result = data;
+      } else if (status == "error") {
+        let output = message ? message : "unknown error";
+        this.$bvModal.msgBoxOk(output);
       }
     },
   },
