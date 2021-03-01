@@ -10,5 +10,5 @@ const api = axios.create({
  * POST | api/multiply | api.multiply | App\Http\Controllers\MatrixMultiplier@multiply
  */
 export const multiply = (payload) => {
-  return api.post("api/multiply", payload);
+  return api.post("api/v1/multiply", payload);
 };
