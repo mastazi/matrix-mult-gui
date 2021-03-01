@@ -3,11 +3,13 @@
     <matrix-size
       @update-matrix-x="updateMatrixX"
       @update-matrix-y="updateMatrixY"
+      @update-matrix-z="updateMatrixZ"
       :key="'ms_' + componentKey"
     ></matrix-size>
     <input-matrix
       :matrix_x="matrix_x"
       :matrix_y="matrix_y"
+      :matrix_z="matrix_z"
       :key="'im_' + componentKey"
     ></input-matrix>
     <result :key="'r_' + componentKey"></result>
@@ -32,7 +34,8 @@ export default {
   data() {
     return {
       matrix_x: 3,
-      matrix_y: 2,
+      matrix_y: 1,
+      matrix_z: 2,
       componentKey: uuid.v4(),
       result: null,
     };
@@ -43,6 +46,9 @@ export default {
     },
     updateMatrixY(newVal) {
       this.matrix_y = newVal;
+    },
+    updateMatrixZ(newVal) {
+      this.matrix_z = newVal;
     },
     resetAllForms() {
       this.componentKey = this.$uuid.v4();
@@ -58,7 +64,8 @@ export default {
       if (status == "success") {
         this.result = data;
       } else if (status == "error") {
-        let output = message ? message : "unknown error";
+        // could be `message?? "unknown error"` if ES11 supported.
+        let output = message || "unknown error";
         this.$bvModal.msgBoxOk(output);
       }
     },

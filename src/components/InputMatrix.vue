@@ -1,21 +1,21 @@
 <template>
   <div class="input-matrix text-center">
     <h1>Input Matrix A Values</h1>
-    <b-form inline v-for="n in matrix_y" :key="'A' + n" class="matrix-form">
+    <b-form inline v-for="y in matrix_y" :key="'A' + y" class="matrix-form">
       <b-form-input
-        v-for="m in matrix_x"
-        :key="'A' + n + ':' + m"
+        v-for="x in matrix_x"
+        :key="'A' + y + ':' + x"
         class="short-input"
-        v-model="matrixA[m - 1][n - 1]"
+        v-model="matrixA[x - 1][y - 1]"
       ></b-form-input>
     </b-form>
     <h1>Input Matrix B Values</h1>
-    <b-form inline v-for="n in matrix_x" :key="'B' + n" class="matrix-form">
+    <b-form inline v-for="x in matrix_x" :key="'B' + x" class="matrix-form">
       <b-form-input
-        v-for="m in matrix_y"
-        :key="'B' + n + ':' + m"
+        v-for="z in matrix_z"
+        :key="'B' + x + ':' + z"
         class="short-input"
-        v-model="matrixB[m - 1][n - 1]"
+        v-model="matrixB[z - 1][x - 1]"
       ></b-form-input>
     </b-form>
   </div>
@@ -29,20 +29,18 @@ export default {
   },
   data() {
     return {
-      matrixA: [
-        [1, 1, 1],
-        [1, 1, 1],
-      ],
+      matrixA: [[1, 2, 3]],
       matrixB: [
-        [1, 1],
-        [1, 1],
-        [1, 1],
+        [1, 2],
+        [3, 4],
+        [5, 6],
       ],
     };
   },
   props: {
     matrix_x: Number,
     matrix_y: Number,
+    matrix_z: Number,
   },
   watch: {
     matrix_x: function () {
@@ -51,6 +49,8 @@ export default {
     },
     matrix_y: function () {
       this.initialiseA();
+    },
+    matrix_z: function () {
       this.initialiseB();
     },
   },
@@ -62,7 +62,7 @@ export default {
       }
     },
     initialiseB() {
-      this.matrixB = new Array(this.matrix_y);
+      this.matrixB = new Array(this.matrix_z);
       for (var i = 0; i < this.matrixB.length; i++) {
         this.matrixB[i] = new Array(this.matrix_x).fill(1);
       }

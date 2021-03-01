@@ -15,7 +15,6 @@
           v-model="matrix_y"
           type="number"
           class="short-input"
-          readonly
         ></b-form-input>
         matrix
       </b-form-group>
@@ -26,10 +25,9 @@
       <b-form-group>
         &hellip;a
         <b-form-input
-          v-model="matrix_y"
+          v-model="matrix_z"
           type="number"
           class="short-input"
-          readonly
         ></b-form-input>
         by
         <b-form-input
@@ -41,7 +39,7 @@
         matrix
       </b-form-group>
     </b-form>
-    <h3>Change dimensions:</h3>
+    <h3>Change linked dimension:</h3>
     <b-form-input
       v-model="matrix_x"
       type="range"
@@ -50,14 +48,6 @@
       class="mt-2"
     ></b-form-input>
     <div class="mb-2">Value: {{ matrix_x }}</div>
-    <b-form-input
-      v-model="matrix_y"
-      type="range"
-      min="1"
-      max="9"
-      class="mt-2"
-    ></b-form-input>
-    <div class="mb-2">Value: {{ matrix_y }}</div>
   </div>
 </template>
 <script>
@@ -78,11 +68,18 @@ export default {
         this.$emit("update-matrix-y", this.matrix_y);
       });
     },
+    matrix_z: function (newVal) {
+      this.$nextTick(function () {
+        this.matrix_z = parseInt(newVal);
+        this.$emit("update-matrix-z", this.matrix_z);
+      });
+    },
   },
   data() {
     return {
       matrix_x: 3,
-      matrix_y: 2,
+      matrix_y: 1,
+      matrix_z: 2,
     };
   },
 };
