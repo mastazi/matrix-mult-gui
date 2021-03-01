@@ -33,7 +33,7 @@ export default {
     return {
       matrix_x: 3,
       matrix_y: 2,
-      componentKey: uuid.v1(),
+      componentKey: uuid.v4(),
       result: null,
     };
   },
@@ -45,7 +45,7 @@ export default {
       this.matrix_y = newVal;
     },
     resetAllForms() {
-      this.componentKey = this.$uuid.v1();
+      this.componentKey = this.$uuid.v4();
       this.matrix_x = 3;
       this.matrix_y = 2;
     },
