@@ -6,7 +6,7 @@
         v-for="x in matrix_x"
         :key="'A' + y + ':' + x"
         class="short-input"
-        v-model="matrixA[x - 1][y - 1]"
+        v-model="matrixA[y - 1][x - 1]"
       ></b-form-input>
     </b-form>
     <h1>Input Matrix B Values</h1>
@@ -15,9 +15,12 @@
         v-for="z in matrix_z"
         :key="'B' + x + ':' + z"
         class="short-input"
-        v-model="matrixB[z - 1][x - 1]"
+        v-model="matrixB[x - 1][z - 1]"
       ></b-form-input>
     </b-form>
+    <p class="mt-4">
+      <b-button @click="multiply">Multiply!</b-button>
+    </p>
   </div>
 </template>
 <script>
@@ -56,16 +59,19 @@ export default {
   },
   methods: {
     initialiseA() {
-      this.matrixA = new Array(this.matrix_x);
+      this.matrixA = new Array(this.matrix_y);
       for (var i = 0; i < this.matrixA.length; i++) {
-        this.matrixA[i] = new Array(this.matrix_y).fill(1);
+        this.matrixA[i] = new Array(this.matrix_x).fill(1);
       }
     },
     initialiseB() {
-      this.matrixB = new Array(this.matrix_z);
+      this.matrixB = new Array(this.matrix_x);
       for (var i = 0; i < this.matrixB.length; i++) {
-        this.matrixB[i] = new Array(this.matrix_x).fill(1);
+        this.matrixB[i] = new Array(this.matrix_z).fill(1);
       }
+    },
+    multiply() {
+      this.$parent.multiplyMatrices(this.matrixA, this.matrixB);
     },
   },
 };

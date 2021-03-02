@@ -1,11 +1,35 @@
 <template>
   <div class="result-matrix">
     <h1>Result</h1>
-    <p>...</p>
+    <p v-for="n in result" :key="n[0]">
+      <span v-for="m in n" :key="n[m]">{{ 30 | excel }}&nbsp;</span>
+    </p>
   </div>
 </template>
 <script>
 export default {
   name: "Result",
+  props: {
+    result: Array,
+  },
+  filters: {
+    excel: function (value) {
+      // note: Excel format is not a base-26 numbering system.
+      // because think about what happens when you go from Z to AA.
+      // if A was 0, then you're going from 9 to 00? doesn't make sense.
+      // if A was 1, then you're going from 9 to 11? again doesn't work.
+      // it is not a numbering system like HEX, it's completely different logic.
+      let remainder = value;
+      let output = "";
+      while (remainder > 0) {
+        // modulo of 26 i.e. the letters in the alphabet
+        let mod = (remainder - 1) % 26;
+        // new output using ASCII code
+        output = String.fromCharCode(65 + mod).toString() + output;
+        remainder = parseInt((remainder - mod) / 26);
+      }
+      return output;
+    },
+  },
 };
 </script>

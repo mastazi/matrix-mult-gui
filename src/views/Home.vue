@@ -12,8 +12,14 @@
       :matrix_z="matrix_z"
       :key="'im_' + componentKey"
     ></input-matrix>
-    <result :key="'r_' + componentKey"></result>
-    <p><b-button @click="resetAllForms">New Multiplication</b-button></p>
+    <result
+      v-if="result != null"
+      :result="result"
+      :key="'r_' + componentKey"
+    ></result>
+    <p class="mt-4">
+      <b-button @click="resetAllForms">New Multiplication</b-button>
+    </p>
   </div>
 </template>
 
@@ -60,7 +66,8 @@ export default {
         matrix_a: matrixA,
         matrix_b: matrixB,
       };
-      let { data, status, message } = await multiply(params);
+      let response = await multiply(params);
+      let { data, status, message } = response.data;
       if (status == "success") {
         this.result = data;
       } else if (status == "error") {
@@ -68,6 +75,8 @@ export default {
         let output = message || "unknown error";
         this.$bvModal.msgBoxOk(output);
       }
+      let result = await multiply(params);
+      console.log(result);
     },
   },
 };
