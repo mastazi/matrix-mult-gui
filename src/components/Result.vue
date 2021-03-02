@@ -16,10 +16,10 @@ export default {
     excel: function (value) {
       /*
        * Note: Excel format is not a base-26 numbering system.
-       * because think about what happens when you go from Z to AA.
-       * if A was 0, then you're going from 9 to 00? doesn't make sense.
+       * Think about what happens when you go from Z to AA:
+       * if A was 0, then you're going from 9 to 00? doesn't make sense;
        * if A was 1, then you're going from 9 to 11? again doesn't work.
-       * it is not a numbering system like HEX, it's completely different logic.
+       * It's not a numbering system like HEX, but completely different logic.
        */
       let remainder = value;
       let output = "";
