@@ -2,7 +2,9 @@
   <div class="result-matrix">
     <h1>Result</h1>
     <p v-for="n in result" :key="n[0]">
-      <span v-for="m in n" :key="n[m]">{{ 30 | excel }}&nbsp;</span>
+      <span class="result-entry" v-for="m in n" :key="n[m]">{{
+        m | excel
+      }}</span>
     </p>
   </div>
 </template>
@@ -35,3 +37,11 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.result-entry {
+  display: inline-block;
+  padding: 0 1rem;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+}
+</style>
