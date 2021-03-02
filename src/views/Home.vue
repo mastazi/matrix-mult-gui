@@ -59,7 +59,9 @@ export default {
     resetAllForms() {
       this.componentKey = this.$uuid.v4();
       this.matrix_x = 3;
-      this.matrix_y = 2;
+      this.matrix_y = 1;
+      this.matrix_z = 2;
+      this.result = null;
     },
     async multiplyMatrices(matrixA, matrixB) {
       let params = {
