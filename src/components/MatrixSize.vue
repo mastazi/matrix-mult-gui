@@ -39,7 +39,7 @@
         matrix
       </b-form-group>
     </b-form>
-    <h3>Change linked dimension:</h3>
+    <h3>Change linked size (width of A, height of B):</h3>
     <b-form-input
       v-model="matrix_x"
       type="range"
