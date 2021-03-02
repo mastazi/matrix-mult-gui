@@ -1,7 +1,7 @@
 # matrix-mult-gui
 
 ## How to run
-Before running for the first time, open .env.example and follow the instructions there.
+Before running for the first time, open `.env.example` and follow the instructions there.
 
 ## Project setup
 ```
